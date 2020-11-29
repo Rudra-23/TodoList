@@ -1,0 +1,16 @@
+
+<div class="container my-4">
+    <h1>Create New List.</h1>
+</div>
+<form action="/list/<%=content.user %>/new" method="POST">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input required type="text" name="title" id="title" class="form-control" value="<%= content.title%>">
+    </div>
+    <div class="form-group">
+        <label for="desc">Description</label>
+        <textarea name="desc" id="desc" class="form-control"><%= content.desc%></textarea>
+    </div>
+    <a href="/list/dashboard" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

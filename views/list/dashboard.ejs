@@ -1,0 +1,27 @@
+<p class="lead mb-3 mt-4"><h1>Welcome <%= user.name %></h1></p>
+<h4 class="my-4">Your Todo List</h4>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+<a href="/list/<%= user.id%>/new" class="btn btn-success">Create New</a>
+
+
+
+<% userlist.forEach(function(ele) { %>
+    <div class="card my-3" style="background-color: aqua;">
+        <div class="card-body">
+          <div class="card-title">
+            <h3><%= ele.title %></h3>
+          </div>
+          <div class="card-text">
+            <%= ele.date.toLocaleDateString() %>
+          </div>
+          <div class="card-text mb-2">
+            <%= ele.desc %>
+          </div>
+        </div>
+        <form action="/list/<%= ele.id %>?_method=DELETE" method="POST" class="d-inline">
+            <button class="btn btn-danger my-2 mx-2" type="submit">Delete</button>
+            <a href="/list/<%=ele.id%>/edit" class="btn btn-secondary">edit</a>
+          </form>
+    </div>
+<% }) %>

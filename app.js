@@ -9,6 +9,7 @@ const mongoose =require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport =require('passport')
+const methodOverride =require('method-override')
 
 require('./passport') (passport)
 //ejs
@@ -19,7 +20,7 @@ app.set('view engine','ejs');
 //bodyparser
 
 app.use(express.urlencoded({extended:false}));
-
+app.use(methodOverride('_method'))
 
 //session 
 
@@ -58,7 +59,7 @@ db.once('open',()=>console.log('connected to db'))
 
 app.use('/',require('./routes/index'));
 app.use('/users',require('./routes/users'));
-
+app.use('/list',require('./routes/list'))
 
 const PORT = process.env.PORT || 3000
 
